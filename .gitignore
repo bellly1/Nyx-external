@@ -1,0 +1,31 @@
+# Build
+bin/
+obj/
+.vs/
+x64/
+Debug/
+Release/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+*.exe
+*.bin
+*.tmp
+*.bak
+
+# Runtime / secrets
+.cfg_cache
+keyauth_session.json
+robloxini_update*
+configs/
+
+# Node (lootlabs-keygen helper)
+lootlabs-keygen/node_modules/
+lootlabs-keygen/.env
