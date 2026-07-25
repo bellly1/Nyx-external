@@ -1,0 +1,3 @@
+version=1.3.0
+exe=https://raw.githubusercontent.com/bellly1/robloxini-updates/main/robloxini.bin
+enabled=1
