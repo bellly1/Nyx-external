@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</ProjectGuid>
+    <RootNamespace>Nyx</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\</IntDir>
+    <TargetName>Nyx External</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\</IntDir>
+    <TargetName>Nyx External</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)offsets;$(SolutionDir)vendor\imgui;$(SolutionDir)vendor\imgui\backends;$(SolutionDir)vendor\easyauth\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)vendor\easyauth\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;dwmapi.lib;wininet.lib;winhttp.lib;urlmon.lib;Psapi.lib;easyauth-bundled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)offsets;$(SolutionDir)vendor\imgui;$(SolutionDir)vendor\imgui\backends;$(SolutionDir)vendor\easyauth\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <!-- EasyAuth bundled lib is /MD — must match -->
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <StringPooling>true</StringPooling>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>None</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <SetChecksum>true</SetChecksum>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <AdditionalLibraryDirectories>$(SolutionDir)vendor\easyauth\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;dwmapi.lib;wininet.lib;winhttp.lib;urlmon.lib;Psapi.lib;easyauth-bundled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/EMITPOGOPHASEINFO %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Memory.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\Engine.Globals.cpp" />
+    <ClCompile Include="src\Engine.Players.cpp" />
+    <ClCompile Include="src\Engine.Actors.cpp" />
+    <ClCompile Include="src\Engine.Camera.cpp" />
+    <ClCompile Include="src\Engine.Aim.cpp" />
+    <ClCompile Include="src\Engine.Movement.cpp" />
+    <ClCompile Include="src\Engine.World.cpp" />
+    <ClCompile Include="src\Engine.Occlusion.cpp" />
+    <ClCompile Include="src\Engine.Desync.cpp" />
+    <ClCompile Include="src\Engine.Tracers.cpp" />
+    <ClCompile Include="src\EspRenderer.cpp" />
+    <ClCompile Include="src\MenuRenderer.cpp" />
+    <ClCompile Include="src\AutoUpdate.cpp" />
+    <ClCompile Include="src\Overlay.cpp" />
+    <ClCompile Include="src\MapParser.cpp" />
+    <ClCompile Include="src\security\HwId.cpp" />
+    <ClCompile Include="src\security\IntegrityMonitor.cpp" />
+    <ClCompile Include="..\vendor\imgui\imgui.cpp" />
+    <ClCompile Include="..\vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\vendor\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\vendor\imgui\backends\imgui_impl_dx11.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Memory.hpp" />
+    <ClInclude Include="include\Math.hpp" />
+    <ClInclude Include="include\Bones.hpp" />
+    <ClInclude Include="include\Timer.hpp" />
+    <ClInclude Include="include\DoubleBuffer.hpp" />
+    <ClInclude Include="include\GameData.hpp" />
+    <ClInclude Include="include\Config.hpp" />
+    <ClInclude Include="include\Engine.hpp" />
+    <ClInclude Include="include\MapParser.hpp" />
+    <ClInclude Include="include\Overlay.hpp" />
+    <ClInclude Include="include\ImAddWidgets.hpp" />
+    <ClInclude Include="include\ConfigIO.hpp" />
+    <ClInclude Include="include\AutoUpdate.hpp" />
+    <ClInclude Include="include\Notify.hpp" />
+    <ClInclude Include="include\SilentAim.hpp" />
+    <ClInclude Include="include\Protect.hpp" />
+    <ClInclude Include="include\Harden.hpp" />
+    <ClInclude Include="include\Fonts.hpp" />
+    <ClInclude Include="include\skStr.h" />
+    <ClInclude Include="include\security\ProtectorMarkers.hpp" />
+    <ClInclude Include="include\security\SecureBuffer.hpp" />
+    <ClInclude Include="include\security\StringVault.hpp" />
+    <ClInclude Include="include\security\ApiResolver.hpp" />
+    <ClInclude Include="include\security\HwId.hpp" />
+    <ClInclude Include="include\security\IntegrityMonitor.hpp" />
+    <ClInclude Include="include\security\SessionToken.hpp" />
+    <ClInclude Include="include\security\AntiTamper.hpp" />
+    <ClInclude Include="include\security\ConfigCrypto.hpp" />
+    <ClInclude Include="include\security\LicenseGate.hpp" />
+    <ClInclude Include="include\security\SecurityRuntime.hpp" />
+    <ClInclude Include="offsets\Offsets.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  EasyAuth property sheet for Visual Studio (2022, 2025, Insiders, etc.).
+
+  1. Download the C++ zip from Dashboard â†’ Libraries and extract it.
+  2. View â†’ Other Windows â†’ Property Manager
+  3. Expand your project â†’ Release | x64
+  4. Right-click Release | x64 â†’ Add Existing Property Sheet â†’ easyauth.props
+
+  That sets include path, lib path, and links easyauth-bundled.lib.
+  Build Release | x64 (the shipped .lib matches that).
+
+  If you move the folder later, edit EasyAuthDir below.
+  Runtime CRT must be /MD (Multi-threaded DLL), same as the shipped lib.
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <!-- When packaged, package-sdk.ps1 rewrites this to $(MSBuildThisFileDirectory). -->
+    <EasyAuthDir>$(MSBuildThisFileDirectory)</EasyAuthDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(EasyAuthDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(EasyAuthDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>easyauth-bundled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>
+
