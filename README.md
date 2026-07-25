@@ -1,2 +1,2 @@
 ﻿# Nyx External updates
-Public auto-update files for robloxini.
+Public auto-update files for Nyx
