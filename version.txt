@@ -1,3 +1,0 @@
-version=1.0
-exe=https://raw.githubusercontent.com/bellly1/robloxini-updates/main/Nyx%20external.bin
-enabled=1
